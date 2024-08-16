@@ -1,24 +1,25 @@
 # frozen_string_literal: true
 
-class RobotGrid
+# TODO
+class Robot
   ORIENTATIONS = Set.new(%w[NORTH EAST SOUTH WEST])
 
-  attr_reader :width, :height, :x, :y, :f
+  attr_reader :table_width, :table_height, :x, :y, :f
 
-  def initialize(width: 5, height: 5)
-    @width = width
-    @height = height
+  def initialize(table_width: 5, table_height: 5)
+    @table_width = table_width
+    @table_height = table_height
   end
 
-  def robot_unplaced?
+  def unplaced?
     x.nil?
   end
 
-  def update_xyf(proposed_x, proposed_y, proposed_f)
+  def place(proposed_x, proposed_y, proposed_f)
     puts "proposed_x: #{proposed_x}, proposed_y: #{proposed_y}, proposed_f: #{proposed_f}"
 
-    return false unless proposed_x.between?(0, width - 1)
-    return false unless proposed_y.between?(0, height - 1)
+    return false unless proposed_x.between?(0, table_width - 1)
+    return false unless proposed_y.between?(0, table_height - 1)
     return false unless ORIENTATIONS.include?(proposed_f)
 
     @x = proposed_x
