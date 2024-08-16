@@ -1,15 +1,12 @@
-require './lib/grid'
+# frozen_string_literal: true
 
-WIDTH = 5
-HEIGHT = 5
-ORIENTATIONS = Set.new(%w[NORTH EAST SOUTH WEST])
+require './lib/grid'
 
 puts 'Enter a PLACE command in the format "PLACE X,Y,F" to place the robot (e.g. PLACE 0,0,NORTH):'
 
-place_cmd = x = y = f = nil
 grid = RobotGrid.new
 
-while true
+loop do
   grid.display
 
   args = gets.chomp.split(' ')

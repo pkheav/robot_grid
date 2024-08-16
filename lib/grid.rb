@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RobotGrid
   ORIENTATIONS = Set.new(%w[NORTH EAST SOUTH WEST])
 
