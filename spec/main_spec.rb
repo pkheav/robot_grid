@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe Main do
+describe do
   subject(:main) { system "ruby main.rb test_files/test#{test_i}.txt" }
 
   context 'with test 1' do
