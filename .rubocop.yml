@@ -1,0 +1,6 @@
+require:
+  - rubocop-performance
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/lib/robot_spec.rb'

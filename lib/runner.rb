@@ -4,6 +4,7 @@ require_relative 'robot'
 
 # TODO
 class Runner
+  # rubocop:disable Metrics
   def self.start
     # puts 'Enter a PLACE command in the format "PLACE X,Y,F" to place the robot (e.g. PLACE 0,0,NORTH):'
 
@@ -39,4 +40,5 @@ class Runner
       end
     end
   end
+  # rubocop:enable Metrics
 end

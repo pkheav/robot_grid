@@ -1,16 +1,18 @@
+# frozen_string_literal: true
+
 require 'robot'
 
-RSpec.describe Robot do
-  let(:robot) { Robot.new }
+describe Robot do
+  let(:robot) { described_class.new }
   let(:x) { 0 }
   let(:y) { 0 }
   let(:f) { :NORTH }
 
   describe '#place' do
-    subject { robot.place(x, y, f) }
+    subject(:place_success) { robot.place(x, y, f) }
 
     it do
-      expect(subject).to be(true)
+      expect(place_success).to be(true)
       expect(robot.unplaced?).to be(false)
       expect(robot.x).to eq(x)
       expect(robot.y).to eq(y)
@@ -19,7 +21,7 @@ RSpec.describe Robot do
 
     shared_examples 'it returns false and keeps x, y and f as nil' do
       it do
-        expect(subject).to be(false)
+        expect(place_success).to be(false)
         expect(robot.unplaced?).to be(true)
         expect(robot.x).to be_nil
         expect(robot.y).to be_nil
@@ -35,6 +37,7 @@ RSpec.describe Robot do
 
     context 'when x is above upperbound' do
       let(:x) { Robot::DEFAULT_TABLE_WIDTH }
+
       include_examples 'it returns false and keeps x, y and f as nil'
     end
 
@@ -60,6 +63,8 @@ RSpec.describe Robot do
       let(:x) { -10 }
       let(:y) { Robot::DEFAULT_TABLE_HEIGHT + 5 }
       let(:f) { :SOUTHEAST }
+
+      include_examples 'it returns false and keeps x, y and f as nil'
     end
   end
 
@@ -74,7 +79,7 @@ RSpec.describe Robot do
     end
 
     describe '#move/#left/#right' do
-      it 'returns false' do
+      it do
         expect(robot.move).to be(false)
         expect(robot.left).to be(false)
         expect(robot.right).to be(false)
@@ -129,7 +134,7 @@ RSpec.describe Robot do
         end
       end
 
-      context 'when robot is at top right corner (x = 0, y = 0)' do
+      context 'when robot is at top right corner' do
         let(:x) { robot.table_width - 1 }
         let(:y) { robot.table_height - 1 }
 
