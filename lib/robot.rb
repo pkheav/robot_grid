@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
-# TODO
+# Robot class responsible for holding the x, y and f values of the Robot
+# as well as the table_width and table_height that the robot is placed on
 class Robot
   DEFAULT_TABLE_WIDTH = 5
   DEFAULT_TABLE_HEIGHT = 5
